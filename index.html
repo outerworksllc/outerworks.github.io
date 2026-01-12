@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OuterWorks | Consultation Services</title>
-  <meta name="description" content="OuterWorks provides project management and construction consultation services including home repair, storm damage, excavation, and landscaping. Serving all areas." />
+  <meta name="description" content="OuterWorks provides project management and construction consultation services including home repair, storm damage, excavation, and landscaping. Serving Texas and Missouri with remote consultation available." />
 
   <style>
     :root{
@@ -28,22 +28,23 @@
       min-height: 100vh;
     }
 
-    /* Logo background */
+    /* Logo background (more visible + moved down) */
     .bg{
       position: fixed;
       inset: 0;
       z-index: -2;
-      background: url("assets/logo.png") center/cover no-repeat fixed;
-      filter: saturate(1.05) contrast(1.02);
+      background: url("assets/logo.png") center 30% / cover no-repeat fixed;
+      filter: saturate(1.15) contrast(1.05);
     }
-    /* Dark overlay for readability */
+
+    /* Dark overlay for readability (reduced darkness so logo pops more) */
     .overlay{
       position: fixed;
       inset: 0;
       z-index: -1;
       background:
-        radial-gradient(900px 520px at 50% 0%, rgba(245,158,11,0.12), transparent 60%),
-        linear-gradient(180deg, rgba(6,10,16,0.78), rgba(6,10,16,0.90));
+        radial-gradient(1000px 600px at 50% 20%, rgba(245,158,11,0.22), transparent 60%),
+        linear-gradient(180deg, rgba(6,10,16,0.62), rgba(6,10,16,0.82));
     }
 
     main{
@@ -242,7 +243,7 @@
         <img src="assets/logo.png" alt="OuterWorks logo" />
         <div class="name">
           <strong>OuterWorks</strong>
-          <span>Consultation Services • Serving all areas</span>
+          <span>Consultation Services • Serving Texas & Missouri + Remote</span>
         </div>
       </div>
 
@@ -259,7 +260,9 @@
         Consultation focused on scope, planning, coordination, and oversight for property improvement work.
         We help clarify what needs done, align expectations, and keep projects moving.
       </p>
-      <div class="mini">Serving all areas. Remote consultation available.</div>
+      <div class="mini">
+        Serving Texas and Missouri, with additional areas supported through remote consultation services.
+      </div>
     </section>
 
     <section class="grid">
@@ -300,10 +303,11 @@
       </aside>
     </section>
 
+    <!-- Service Area section (replaced the "tools embed" text) -->
     <section class="card">
       <div class="embed">
-        <div><strong style="color:var(--text)">Tools & calculators</strong> (coming soon)</div>
-        <div>We can embed forms and project tools here later.</div>
+        <div><strong style="color:var(--text)">Service Area</strong></div>
+        <div>Serving Texas and Missouri, and additional areas through remote consultation services.</div>
       </div>
     </section>
 
