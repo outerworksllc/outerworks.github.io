@@ -4,165 +4,314 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OuterWorks | Consultation Services</title>
-
   <meta name="description" content="OuterWorks provides project management and construction consultation services including home repair, storm damage, excavation, and landscaping. Serving all areas." />
 
   <style>
-    :root {
-      --bg: #0e1116;
-      --card: rgba(255,255,255,0.06);
-      --border: rgba(255,255,255,0.12);
-      --text: #f1f1f1;
-      --muted: #b6b6b6;
+    :root{
+      --bg: #0b0f17;
+      --card: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
       --accent: #f59e0b;
-      --max: 960px;
-      --radius: 14px;
+      --max: 980px;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,0.55);
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: radial-gradient(circle at top, #1a1f2b, #0e1116);
       color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
     }
 
-    main {
+    /* Logo background */
+    .bg{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/logo.png") center/cover no-repeat fixed;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    /* Dark overlay for readability */
+    .overlay{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(900px 520px at 50% 0%, rgba(245,158,11,0.12), transparent 60%),
+        linear-gradient(180deg, rgba(6,10,16,0.78), rgba(6,10,16,0.90));
+    }
+
+    main{
       max-width: var(--max);
-      margin: auto;
-      padding: 60px 20px;
+      margin: 0 auto;
+      padding: 56px 18px 70px;
       display: grid;
-      gap: 40px;
+      gap: 18px;
     }
 
-    /* LOGO */
-    .logo {
-      display: flex;
-      justify-content: center;
-    }
-
-    .logo img {
-      max-width: 360px;
-      width: 100%;
-      height: auto;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center;
-    }
-
-    .hero h1 {
-      margin: 16px 0 8px;
-      font-size: 32px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      max-width: 680px;
-      margin: auto;
-      line-height: 1.6;
-    }
-
-    /* SERVICES */
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-    }
-
-    .services ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .services li::before {
-      content: "▸";
-      color: var(--accent);
-      margin-right: 10px;
-    }
-
-    /* CONTACT */
-    .contact {
-      display: grid;
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap: 14px;
-      text-align: center;
+      flex-wrap: wrap;
     }
 
-    .contact a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 0;
     }
-
-    .contact a:hover {
-      text-decoration: underline;
+    .brand img{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      object-fit: cover;
     }
-
-    footer {
-      text-align: center;
+    .brand .name{
+      line-height: 1.1;
+    }
+    .brand .name strong{
+      display:block;
+      font-size: 16px;
+      letter-spacing: .3px;
+    }
+    .brand .name span{
+      display:block;
       font-size: 13px;
       color: var(--muted);
-      margin-top: 20px;
+    }
+
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      text-decoration:none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+    }
+    .btn.primary{
+      border-color: rgba(245,158,11,0.55);
+      background: rgba(245,158,11,0.14);
+    }
+    .btn.primary:hover{
+      background: rgba(245,158,11,0.18);
+      border-color: rgba(245,158,11,0.75);
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+
+    .pad{ padding: 26px; }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: 40px;
+      line-height: 1.08;
+      letter-spacing: -0.4px;
+    }
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+    }
+
+    .list{
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .list li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: var(--text);
+    }
+    .dot{
+      color: var(--accent);
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .mini{
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .contactBox{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .contactRow{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px 12px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+    }
+    .contactRow small{
+      display:block;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .contactRow a{
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 900;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+
+    .embed{
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding: 18px 26px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer{
+      margin-top: 8px;
+      text-align:center;
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px){
+      h1{ font-size: 34px; }
+      .grid{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
-
 <body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
   <main>
-    <!-- LOGO -->
-    <div class="logo">
-      <img src="assets/logo.png" alt="OuterWorks logo" />
+    <div class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="OuterWorks logo" />
+        <div class="name">
+          <strong>OuterWorks</strong>
+          <span>Consultation Services • Serving all areas</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="#contact">Contact</a>
+        <a class="btn" href="tel:+13252619675">Call Business</a>
+        <a class="btn" href="tel:+16363750094">Call Mobile</a>
+      </div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Consultation Services</h1>
-      <p>
-        OuterWorks provides professional consultation for construction and property improvement projects.
-        We assist with planning, coordination, and oversight to help projects move forward efficiently.
-        Serving all areas.
+    <section class="card pad">
+      <h1>Project Management & Construction Consultation</h1>
+      <p class="sub">
+        Consultation focused on scope, planning, coordination, and oversight for property improvement work.
+        We help clarify what needs done, align expectations, and keep projects moving.
       </p>
+      <div class="mini">Serving all areas. Remote consultation available.</div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="card services">
-      <h2>Areas of Consultation</h2>
-      <ul>
-        <li>Project Management Consultation</li>
-        <li>Construction Consultation</li>
-        <li>Home Repair & Maintenance</li>
-        <li>Storm Damage Assessment</li>
-        <li>Excavation & Earthwork</li>
-        <li>Landscaping & Site Preparation</li>
-      </ul>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="card contact">
-      <h2>Contact</h2>
-      <div>
-        Business: <a href="tel:+13252619675">325-261-9675</a>
+    <section class="grid">
+      <div class="card pad">
+        <h2 style="margin:0 0 6px;">Services</h2>
+        <ul class="list">
+          <li><span class="dot">▸</span><span>Project Management Consultation</span></li>
+          <li><span class="dot">▸</span><span>Construction Consultation</span></li>
+          <li><span class="dot">▸</span><span>Home Repair & General Maintenance</span></li>
+          <li><span class="dot">▸</span><span>Storm Damage Support & Planning</span></li>
+          <li><span class="dot">▸</span><span>Excavation / Grading / Leveling / Driveway Rock</span></li>
+          <li><span class="dot">▸</span><span>Landscaping & Site Preparation</span></li>
+          <li><span class="dot">▸</span><span>Debris Haul Away Coordination</span></li>
+        </ul>
       </div>
-      <div>
-        Mobile: <a href="tel:+16363750094">636-375-0094</a>
+
+      <aside class="card pad" id="contact">
+        <h2 style="margin:0 0 6px;">Contact</h2>
+        <p class="sub" style="margin:0;">Call or text to discuss your project and next steps.</p>
+
+        <div class="contactBox">
+          <div class="contactRow">
+            <div>
+              <small>Business</small>
+              <a href="tel:+13252619675">325-261-9675</a>
+            </div>
+            <span aria-hidden="true">☎</span>
+          </div>
+
+          <div class="contactRow">
+            <div>
+              <small>Mobile</small>
+              <a href="tel:+16363750094">636-375-0094</a>
+            </div>
+            <span aria-hidden="true">📱</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card">
+      <div class="embed">
+        <div><strong style="color:var(--text)">Tools & calculators</strong> (coming soon)</div>
+        <div>We can embed forms and project tools here later.</div>
       </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> OuterWorks. All rights reserved.
-    </footer>
+    <footer>© <span id="y"></span> OuterWorks</footer>
   </main>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
